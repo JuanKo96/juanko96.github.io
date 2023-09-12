@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://JuanKo96.github.io/sitemap.xml
+Sitemap: https://juanko96.github.io/sitemap.xml
