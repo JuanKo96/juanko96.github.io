@@ -12343,51 +12343,52 @@
     <meta name="twitter:image:width" content="560">
     <meta name="twitter:image:height" content="295">
   `);
-
+    // uncomment below to activate the function
+    
     // if this is a proprer article, generate Google Scholar meta data
-    if (data.doiSuffix){
-      appendHead(`
-      <!--  https://scholar.google.com/intl/en/scholar/inclusion.html#indexing -->\n`);
+    // if (data.doiSuffix){
+    //   appendHead(`
+    //   <!--  https://scholar.google.com/intl/en/scholar/inclusion.html#indexing -->\n`);
 
-      meta('citation_title', data.title);
-      meta('citation_fulltext_html_url', data.url);
-      meta('citation_volume', data.volume);
-      meta('citation_issue', data.issue);
-      meta('citation_firstpage', data.doiSuffix ? `e${data.doiSuffix}` : undefined);
-      meta('citation_doi', data.doi);
+    //   meta('citation_title', data.title);
+    //   meta('citation_fulltext_html_url', data.url);
+    //   meta('citation_volume', data.volume);
+    //   meta('citation_issue', data.issue);
+    //   meta('citation_firstpage', data.doiSuffix ? `e${data.doiSuffix}` : undefined);
+    //   meta('citation_doi', data.doi);
 
-      let journal = data.journal || {};
-      meta('citation_journal_title', journal.full_title || journal.title);
-      meta('citation_journal_abbrev', journal.abbrev_title);
-      meta('citation_issn', journal.issn);
-      meta('citation_publisher', journal.publisher);
-      meta('citation_fulltext_world_readable', '', true);
+    //   let journal = data.journal || {};
+    //   meta('citation_journal_title', journal.full_title || journal.title);
+    //   meta('citation_journal_abbrev', journal.abbrev_title);
+    //   meta('citation_issn', journal.issn);
+    //   meta('citation_publisher', journal.publisher);
+    //   meta('citation_fulltext_world_readable', '', true);
 
-      if (data.publishedDate){
-        meta('citation_online_date', `${data.publishedYear}/${data.publishedMonthPadded}/${data.publishedDayPadded}`);
-        meta('citation_publication_date', `${data.publishedYear}/${data.publishedMonthPadded}/${data.publishedDayPadded}`);
-      }
+    //   if (data.publishedDate){
+    //     meta('citation_online_date', `${data.publishedYear}/${data.publishedMonthPadded}/${data.publishedDayPadded}`);
+    //     meta('citation_publication_date', `${data.publishedYear}/${data.publishedMonthPadded}/${data.publishedDayPadded}`);
+    //   }
 
-      (data.authors || []).forEach((a) => {
-        meta('citation_author', `${a.lastName}, ${a.firstName}`);
-        meta('citation_author_institution', a.affiliation);
-      });
-    } else {
-      console.warn('No DOI suffix in data; not adding citation meta tags!');
-    }
+    //   (data.authors || []).forEach((a) => {
+    //     meta('citation_author', `${a.lastName}, ${a.firstName}`);
+    //     meta('citation_author_institution', a.affiliation);
+    //   });
+    // } else {
+    //   console.warn('No DOI suffix in data; not adding citation meta tags!');
+    // }
 
-    if (data.citations) {
-      data.citations.forEach(key => {
-        if (data.bibliography && data.bibliography.has(key)) {
-          const entry = data.bibliography.get(key);
-          meta('citation_reference', citation_meta_content(entry) );
-        } else {
-          console.warn('No bibliography data found for ' + key);
-        }
-      });
-    } else {
-      console.warn('No citations found; not adding any references meta tags!');
-    }
+    // if (data.citations) {
+    //   data.citations.forEach(key => {
+    //     if (data.bibliography && data.bibliography.has(key)) {
+    //       const entry = data.bibliography.get(key);
+    //       meta('citation_reference', citation_meta_content(entry) );
+    //     } else {
+    //       console.warn('No bibliography data found for ' + key);
+    //     }
+    //   });
+    // } else {
+    //   console.warn('No citations found; not adding any references meta tags!');
+    // }
   }
 
   function appendHtml(el, html) {
